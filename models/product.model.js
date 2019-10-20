@@ -1,5 +1,5 @@
 const mognoose = require('mongoose');
-const Shema = mognoose.Schema;
+const Schema = mognoose.Schema;
 var newProduct = new Schema({
     name: {
         type: String,
@@ -12,6 +12,10 @@ var newProduct = new Schema({
     description: {
         type: String
     },
-    thumbnails: []
+    thumbnails: [],
+    currency: {
+        type: String,
+        required: true
+    }
 })
 module.exports = mognoose.model('products', newProduct);

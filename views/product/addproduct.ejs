@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Product</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>PRODUCTS</li>
+                <li><a href="">Members</a></li>
+                <li><a href="/product">Products</a></li>
+                <li><a href="">Orders</a></li>
+                <li><a href="">Rates</a></li>
+                <li><a href="">Ships</a></li>
+                <li><a href="">Payments</a></li>
+                <li><a href="/admin/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Add Product</h1>
+        <form action="/product/add" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Product Name</td>
+                    <td><input type="text" name="name" id="name" placeholder="Enter product name ..." required></td>
+                </tr>
+                <tr>
+                    <td>Product Price</td>
+                    <td><input type="text" name="price" id="price" placeholder="Enter product price ..." required></td>
+                </tr>
+                <tr>
+                    <td>Product Description</td>
+                    <td><textarea name="description" id="description" cols="30" rows="10" required
+                            placeholder="Enter product description ..."></textarea></td>
+                </tr>
+                <tr>
+                    <td>Product Currency</td>
+                    <td><select name="currency" id="currency" required>
+                            <option value="USD">USD</option>
+                            <option value="VND">Viet Nam Dong</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Product Thumbnail</td>
+                    <td><input type="file" multiple name="thumbnail" id="thumbnail"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit">Add New</button></td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+
+</html>

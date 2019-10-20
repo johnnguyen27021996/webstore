@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const app = express();
 
 const session = require('./src/session/session');
@@ -15,8 +16,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session);
+app.use(flash());
 
 database();
+
+app.use('/', require('./routers/index/index'));
+
+app.use('/admin', require('./routers/author'));
+app.use('/dashboard', require('./routers/dashboard'));
+app.use('/product', require('./routers/product'));
+app.use('/rate', require('./routers/rate'));
 
 app.listen(process.env.PORT || process.env.port, () => {
     console.log('Running ...');

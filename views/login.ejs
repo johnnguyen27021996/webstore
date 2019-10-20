@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+
+<body>
+    <% if(error && error.length>0){ %>
+        <p><%= error %></p>
+    <% } %>
+    <h1>Login to ADMIN</h1>
+    <form action="/admin/login" method="post">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" name="username" id="username" placeholder="Enter username ..." required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" id="password" placeholder="Enter password ..." required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Login</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

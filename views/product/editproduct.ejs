@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Product</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>PRODUCTS</li>
+                <li><a href="">Members</a></li>
+                <li><a href="/product">Products</a></li>
+                <li><a href="">Orders</a></li>
+                <li><a href="">Rates</a></li>
+                <li><a href="">Ships</a></li>
+                <li><a href="">Payments</a></li>
+                <li><a href="/admin/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Edit Product</h1>
+        <form action="/product/edit/<%= product._id %>" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>Product Name</td>
+                    <td><input type="text" name="name" id="name" placeholder="<%= product.name %>"></td>
+                </tr>
+                <tr>
+                    <td>Product Price</td>
+                    <td><input type="text" name="price" id="price" placeholder="<%= product.price %>"></td>
+                </tr>
+                <tr>
+                    <td>Product Description</td>
+                    <td><textarea name="description" id="description" cols="30" rows="10"
+                            placeholder="<%= product.description %>"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Product Currency</td>
+                    <td><select name="currency" id="currency" required>
+                            <option value="USD" <% if(product.currency == 'USD'){ %> selected <% } %>>USD</option>
+                            <option value="VND" <% if(product.currency == 'VND'){ %> selected <% } %>>Viet Nam Dong</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Product Thumbnail</td>
+                    <td>
+                        <input type="file" multiple name="thumbnail" id="thumbnail">
+                        <ul style="list-style: none;">
+                            <% if(product.thumbnails != '' || product.thumbnails != undefined){
+                                product.thumbnails.forEach(item=>{ %>
+                                    <li><img src="/images/product/<%= item %>" alt="" width="30px" height="30px" style="float: left; margin-right: 10px;"></li>
+                                <% })
+                            } %>
+                            <div style="clear: both;"></div>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit">Edit</button></td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</body>
+
+</html>

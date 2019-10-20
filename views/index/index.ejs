@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="menu-main">
+            <ul class="menu">
+                <li class="logo">WEBSTORE</li>
+                <li><a href="/">HOME</a></li>
+                <li><a href="">PRODUCT</a></li>
+                <li><a href="/about">ABOUT US</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <li><a href="">CART</a></li>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="feature-product">
+        <% products.forEach(item=>{ %>
+            <div class="item-product">
+                    <div class="thumbnail-product">
+                        <img src="/images/product/<%= item.thumbnails[0] %>" alt="" width="100%" height="300px">
+                    </div>
+                    <h2 class="name-product"><%= item.name %></h2>
+                    <h3 class="price-product"><%= item.price %> <%= item.currency %></h3>
+                    <div class="rate">
+                        DANH GIA SO SAO O DAY
+                    </div>
+                    <div class="btn">
+                        <a href="" class="addtocart">Add To Cart</a>
+                        <a href="" class="readmore">Read More</a>
+                    </div>
+                </div>
+        <% }) %>
+    </section>
+
+    <section class="new-product">
+        // code o day
+    </section>
+
+    <section class="custom-comment">
+
+    </section>
+
+    <footer>
+        <p class="createby">2019 &copy; BY JOHN NGUYEN</p>
+        <div class="social">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-google-plus-g"></i>
+        </div>
+    </footer>
+    
+</body>
+</html>
