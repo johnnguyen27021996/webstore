@@ -9,4 +9,10 @@ router.get('/contact', controller.getContact);
 
 router.get('/detailproduct/:id', controller.getDetailOneProduct);
 
+router.get('/cart', controller.getCart);
+
+router.post('/addtocart', controller.addToCart);
+
+router.post('/changequantitycart', controller.changeQuantityCart);
+
 module.exports = router;

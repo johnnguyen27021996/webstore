@@ -1,0 +1,25 @@
+<% var total = 0;
+        if(cart){ %>
+<% cart.forEach(item=>{ 
+                total +=  parseInt(item.product.price)*parseInt(item.quantity);
+                %>
+<tr>
+    <td><%= item.product.name %></td>
+    <td><%= item.product.price %> <%= item.product.currency %></td>
+    <td><input type="number" name="quantity" id="quantity" data-id="<%= item.product._id %>"
+            value="<%= item.quantity %>"></td>
+    <td><%= parseInt(item.product.price)*parseInt(item.quantity) %> <%= item.product.currency %></td>
+</tr>
+<% }) %>
+<% }else{ %>
+<tr>
+    <td colspan="4">
+        <h1>NO ITEM IN CART</h1>
+    </td>
+</tr>
+<% } %>
+<tr>
+    <td colspan="4">
+        <h2>Total: <%= total %> USD</h2>
+    </td>
+</tr>

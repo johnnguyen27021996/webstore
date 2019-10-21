@@ -273,3 +273,25 @@ label[for="customername"]{
 }
 /*********/
 /*DETAIL ONE PRODUCT*/
+
+/*CART*/
+/*********/
+table{
+    border-spacing: 0;
+}
+.cart-main th, .cart-main td{
+    width: 400px;
+    text-align: center;
+    background: #333333;
+    color: #ffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+}
+#quantity{
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    padding: 3px 0 3px 3px;
+}
+/*********/
+/*CART*/

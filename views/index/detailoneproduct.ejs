@@ -20,7 +20,13 @@
                 <li><a href="">PRODUCT</a></li>
                 <li><a href="/about">ABOUT US</a></li>
                 <li><a href="/contact">CONTACT</a></li>
-                <li><a href="">CART</a></li>
+                <li class="cart-item"><a href="/cart">CART
+                        <% if(cart == '' || cart == undefined){ %>
+                        <span>0 item</span>
+                        <% }else{ %>
+                        <span><%= cart.length %> item</span>
+                        <% } %>
+                    </a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
@@ -51,7 +57,7 @@
                 <span class="dd"><%= product.description %></span>
             </p>
             <div class="btn">
-                <a href="javascript:void(0);" class="addtocart">Add To Cart</a>
+                <a href="javascript:void(0);" class="addtocart" data-id="<%= product._id %>">Add To Cart</a>
             </div>
         </div>
     </section>
@@ -110,7 +116,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="/js/addtocart.js"></script>
+    <script src="/js/cartaction.js"></script>
     <script>
         $(document).ready(function () {
 

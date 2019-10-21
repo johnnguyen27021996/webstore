@@ -3,3 +3,17 @@
 - dat hang
 - tra tien online
 - danh gia san pham
+
+# Completed
+- Login, logout ADMIN
+- Product: ADD, EDIT, DELETE
+- Rate: ADD, DELETE
+- Cart: ADD, CHANGE CART
+
+ # Fix:
+ - when quantity item = 0 show not interface start
+ - time create comment in rate not beauty
+ - not slug url
+
+ # Process
+ - shiping, order, payment, note, chatbot

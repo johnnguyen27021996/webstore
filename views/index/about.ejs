@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -18,7 +20,13 @@
                 <li><a href="">PRODUCT</a></li>
                 <li><a href="/about">ABOUT US</a></li>
                 <li><a href="/contact">CONTACT</a></li>
-                <li><a href="">CART</a></li>
+                <li class="cart-item"><a href="/cart">CART
+                        <% if(cart == '' || cart == undefined){ %>
+                        <span>0 item</span>
+                        <% }else{ %>
+                        <span><%= cart.length %> item</span>
+                        <% } %>
+                    </a></li>
                 <div class="clear"></div>
             </ul>
         </nav>
@@ -26,17 +34,50 @@
 
     <section class="about">
         <h1>ABOUT US</h1>
-        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h3>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet vel non ipsa eaque nam culpa libero?</h1>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h3>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis tempora ipsum explicabo iste nobis, fuga
+            numquam quisquam accusantium perspiciatis culpa nihil totam ipsa nam. Cumque tempora, inventore officiis aut
+            quaerat, impedit adipisci accusantium iure dicta aliquam quidem ducimus? Veniam quas porro beatae eveniet
+            vel non ipsa eaque nam culpa libero?</h1>
     </section>
 
     <footer>
@@ -47,6 +88,7 @@
             <i class="fab fa-google-plus-g"></i>
         </div>
     </footer>
-    
+
 </body>
+
 </html>

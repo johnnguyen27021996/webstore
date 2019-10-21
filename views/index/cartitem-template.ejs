@@ -1,0 +1,7 @@
+<li class="cart-item"><a href="/cart">CART
+        <% if(cart == '' || cart == undefined){ %>
+        <span>0 item</span>
+        <% }else{ %>
+        <span><%= cart.length %> item</span>
+        <% } %>
+    </a></li>
