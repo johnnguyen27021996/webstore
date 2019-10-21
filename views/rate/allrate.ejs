@@ -16,41 +16,34 @@
                 <li><a href="">Members</a></li>
                 <li><a href="/product">Products</a></li>
                 <li><a href="">Orders</a></li>
-                <li><a href="">Rates</a></li>
+                <li><a href="/rate">Rates</a></li>
                 <li><a href="">Ships</a></li>
                 <li><a href="">Payments</a></li>
                 <li><a href="/admin/logout">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <a href="/product/add">Add New Product</a>
     <section>
         <table border="1">
             <thead>
-                <th>Thumbnail</th>
+                <th>Customer Name</th>
                 <th>Product Name</th>
-                <th>Price</th>
-                <th>Currency</th>
-                <th>Description</th>
+                <th>Star</th>
+                <th>Comment</th>
+                <th>Time</th>
                 <th>Action</th>
             </thead>
             <tbody>
-                <% products.forEach(item=>{ %>
+                <% rates.forEach(item=>{ %>
                 <tr>
-                    <td><% if(item.thumbnails != undefined){
-                        item.thumbnails.forEach(thumbnail=>{ %>
-                            <img src="/images/product/<%= thumbnail %>" alt="" width="30px" height="30px">
-                        <% })
-                    }else{ %>
-                        <p>Thumbnails</p>
-                    <% } %>
+                    <td><%= item.createBy %>
                     </td>
-                    <td><%= item.name %></td>
-                    <td><%= item.price %></td>
-                    <td><%= item.currency %></td>
-                    <td><%= item.description %></td>
-                    <td><a href="/product/edit/<%= item._id %>">Edit</a>||<a
-                            href="/product/delete/<%= item._id %>">Delete</a></th>
+                    <td><%= item.productID.name %></td>
+                    <td><%= item.star %></td>
+                    <td><%= item.comment %></td>
+                    <td><%= item.createAt %></td>
+                    <td><a href="/rate/edit/<%= item._id %>">Edit</a>||<a
+                            href="/rate/delete/<%= item._id %>">Delete</a></th>
                 </tr>
                 <% }) %>
             </tbody>
@@ -61,7 +54,7 @@
             <ul>
                 <li>Pre</li>
                 <% for(let i=0; i<pagination; i++){ %>
-                <li><a href="/product/p=<%= (i+1) %>"><%= (i+1) %></a></li>
+                <li><a href="/rate/p=<%= (i+1) %>"><%= (i+1) %></a></li>
                 <% } %>
                 <li>Next</li>
             </ul>

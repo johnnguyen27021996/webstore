@@ -36,8 +36,8 @@
                         DANH GIA SO SAO O DAY
                     </div>
                     <div class="btn">
-                        <a href="" class="addtocart">Add To Cart</a>
-                        <a href="" class="readmore">Read More</a>
+                        <a href="javascript:void(0);" class="addtocart">Add To Cart</a>
+                        <a href="/detailproduct/<%= item._id %>" class="readmore">Read More</a>
                     </div>
                 </div>
         <% }) %>
@@ -59,6 +59,9 @@
             <i class="fab fa-google-plus-g"></i>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/js/addtocart.js"></script>
     
 </body>
 </html>

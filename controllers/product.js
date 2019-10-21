@@ -27,34 +27,40 @@ exports.addNewProduct = (req, res) => {
         currency = req.body.currency,
         thumbnail = [],
         upload = req.files;
-    let newProduct = new dbProduct();
-    newProduct.name = name;
-    newProduct.price = price;
-    newProduct.description = description;
-    newProduct.currency = currency;
-    if (upload != undefined) {
-        upload.forEach(item => {
-            thumbnail.push(item.filename);
-        });
-        newProduct.thumbnails = thumbnail;
-    }
-    newProduct.save((err) => {
-        if (!err) {
-            res.redirect('/product');
+    dbProduct.findOne({ name: name }, (err, doc) => {
+        if (doc) {
+            res.redirect('/product/add');
+        } else {
+            let newProduct = new dbProduct();
+            newProduct.name = name;
+            newProduct.price = price;
+            newProduct.description = description;
+            newProduct.currency = currency;
+            if (upload != undefined) {
+                upload.forEach(item => {
+                    thumbnail.push(item.filename);
+                });
+                newProduct.thumbnails = thumbnail;
+            }
+            newProduct.save((err) => {
+                if (!err) {
+                    res.redirect('/product');
+                }
+            })
         }
     })
 }
 
-exports.getEditProduct = (req, res)=>{
+exports.getEditProduct = (req, res) => {
     let id = req.params.id;
-    dbProduct.findById(id).exec((err, doc)=>{
+    dbProduct.findById(id).exec((err, doc) => {
         res.render('product/editproduct', {
             product: doc
         })
     })
 }
 
-exports.postEditProduct = (req, res)=>{
+exports.postEditProduct = (req, res) => {
     let id = req.params.id,
         name = req.body.name,
         price = req.body.price,
@@ -62,22 +68,22 @@ exports.postEditProduct = (req, res)=>{
         currency = req.body.currency,
         thumbnail = [],
         upload = req.files;
-    dbProduct.findById(id).exec((err, doc)=>{
-        if(name != ''){
+    dbProduct.findById(id).exec((err, doc) => {
+        if (name != '') {
             doc.name = name;
         }
-        if(price != ''){
+        if (price != '') {
             doc.price = price;
         }
-        if(description != ''){
+        if (description != '') {
             doc.description = description;
         }
-        if(currency != ''){
+        if (currency != '') {
             doc.currency = currency
         }
-        if(upload != undefined){
-            doc.thumbnails.forEach(ditem=>{
-                fs.unlink('public/images/product/' + ditem, function(){});
+        if (upload != undefined) {
+            doc.thumbnails.forEach(ditem => {
+                fs.unlink('public/images/product/' + ditem, function () { });
             })
             upload.forEach(item => {
                 thumbnail.push(item.filename);
@@ -92,11 +98,11 @@ exports.postEditProduct = (req, res)=>{
     })
 }
 
-exports.getDeleteProduct = (req, res)=>{
+exports.getDeleteProduct = (req, res) => {
     let id = req.params.id;
-    dbProduct.findByIdAndDelete(id).exec((err, doc)=>{
-        doc.thumbnails.forEach(item=>{
-            fs.unlink('public/images/product/' + item, function(){});
+    dbProduct.findByIdAndDelete(id).exec((err, doc) => {
+        doc.thumbnails.forEach(item => {
+            fs.unlink('public/images/product/' + item, function () { });
         })
         res.redirect('/product');
     })

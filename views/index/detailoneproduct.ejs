@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="menu-main">
+            <ul class="menu">
+                <li class="logo">WEBSTORE</li>
+                <li><a href="/">HOME</a></li>
+                <li><a href="">PRODUCT</a></li>
+                <li><a href="/about">ABOUT US</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                <li><a href="">CART</a></li>
+                <div class="clear"></div>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="product-main">
+        <div class="thumbnails">
+            <% if(product.thumbnails != '' || product.thumbnails != undefined){ %>
+            <% product.thumbnails.forEach(item => { %>
+            <img src="/images/product/<%= item %>" alt="" width="100px" height="100px">
+            <% }) %>
+            <% }else{ %>
+            <h1>No Thumbnails</h1>
+            <% } %>
+        </div>
+        <div class="detail">
+            <h1 class="name">Name Product <span><%= product.name %></span> </h1>
+            <h3 class="star">AVG Star:
+                <% if(avgstar == NaN){ %>
+                <span>0 <i class="fas fa-star"></i></span>
+                <% }else{ %>
+                <span><%= avgstar %> <i class="fas fa-star"></i></span>
+                <% } %>
+            </h3>
+            <h3 class="price">Price <span><%= product.price %> <%= product.currency %></span></h3>
+            <p class="description">
+                <h4>Description</h4>
+                <span class="dd"><%= product.description %></span>
+            </p>
+            <div class="btn">
+                <a href="javascript:void(0);" class="addtocart">Add To Cart</a>
+            </div>
+        </div>
+    </section>
+    <hr>
+
+    <section class="related-product">
+        // code o day
+    </section>
+    <hr>
+
+    <h1 class="text-title">Your Review</h1>
+    <section class="rate">
+        <div class="star">
+            <input type="radio" name="star" id="mot" value="5">
+            <label for="mot"><i class="fas fa-star"></i></label>
+            <input type="radio" name="star" id="hai" value="4">
+            <label for="hai"><i class="fas fa-star"></i></label>
+            <input type="radio" name="star" id="ba" value="3">
+            <label for="ba"><i class="fas fa-star"></i></label>
+            <input type="radio" name="star" id="bon" value="2">
+            <label for="bon"><i class="fas fa-star"></i></label>
+            <input type="radio" name="star" id="nam" value="1">
+            <label for="nam"><i class="fas fa-star"></i></label>
+        </div>
+        <label for="customername">Name Customer</label><br>
+        <input type="text" name="customername" id="customername" placeholder="Enter your name ..." required><br>
+        <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Your comment ..."></textarea><br>
+        <button type="button" class="sendrate" data-id="<%= product._id %>">Send Rate</button>
+    </section>
+
+    <h1 class="text-title">Other Customer Review</h1>
+    <section class="customer-rate">
+        <% if(rates == ''){ %>
+        <div class="comment-item">
+            <h1>No Comment</h1>
+        </div>
+        <% } %>
+        <% rates.forEach(item=>{ %>
+        <div class="comment-item">
+            <p class="comment-time">creat at <span><%= item.createAt %></span></p>
+            <h3><%= item.star %> <i class="fas fa-star"></i></h3>
+            <p class="comment-by">comment by <span><%= item.createBy %></span></p>
+            <p class="comment-content"><%= item.comment %></p>
+        </div>
+        <% }) %>
+    </section>
+
+    <footer>
+        <p class="createby">2019 &copy; BY JOHN NGUYEN</p>
+        <div class="social">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-google-plus-g"></i>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="/js/addtocart.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.sendrate').click(function () {
+                let id = $(this).data('id'),
+                    star = $('.star input[type="radio"]:checked').val(),
+                    name = $('#customername').val(),
+                    comment = $('#comment').val();
+                if (star == undefined) {
+                    alert('Please Review Star');
+                } else {
+                    if (name == '') {
+                        alert('Please Enter Your Name');
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: "/rate/add",
+                            data: {
+                                id: id,
+                                star: star,
+                                customername: name,
+                                comment: comment
+                            },
+                            success: function (data) {
+                                if (data == '1') {
+                                    alert('Review Success');
+                                    $('.star input[type="radio"]').attr('checked', false);
+                                    $('#customername').val('');
+                                    $('#comment').val('');
+                                } else {
+                                    alert('Review Error')
+                                }
+                            }
+                        })
+                    }
+                }
+
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>

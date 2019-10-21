@@ -7,4 +7,6 @@ router.get('/about', controller.getAbout);
 
 router.get('/contact', controller.getContact);
 
+router.get('/detailproduct/:id', controller.getDetailOneProduct);
+
 module.exports = router;

@@ -13,6 +13,8 @@ router.get('/', islog, controller.getAllRate);
 
 router.get('/p=(:page)?', islog, controller.getAllRate);
 
+router.post('/add', controller.addNewRate);
+
 router.get('/delete/:id', islog, controller.getDeleteRate);
 
 module.exports = router;
