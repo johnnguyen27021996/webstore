@@ -3,8 +3,10 @@ const Schema = mongoose.Schema;
 var newOrder = new Schema({
     productID: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'products',
+            id:{
+                type: Schema.Types.ObjectId,
+                ref: 'products'
+            },
             quantity: {
                 type: String,
                 require: true
