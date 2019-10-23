@@ -21,6 +21,7 @@ app.use(flash());
 database();
 
 app.use('/', require('./routers/index/index'));
+app.use('/', require('./routers/index/payment'));
 
 app.use('/admin', require('./routers/author'));
 app.use('/dashboard', require('./routers/dashboard'));

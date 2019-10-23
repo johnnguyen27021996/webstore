@@ -27,10 +27,15 @@ var newOrder = new Schema({
     phoneCustomer: {
         type: String
     },
+    location: {
+        type: String,
+        required: true
+    },
     // shipID: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'ships'
     // },
+    payID: String,
     payType: {
         type: String,
         required: true
