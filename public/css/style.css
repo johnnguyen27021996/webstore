@@ -295,3 +295,27 @@ table{
 }
 /*********/
 /*CART*/
+
+/*CHECKOUT*/
+/*********/
+.checkout td{
+    padding: 10px;
+}
+.checkout td input{
+    width: 250px;
+    height: 30px;
+    padding: 3px;
+}
+.checkout button{
+    border: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background: olivedrab;
+    font-weight: 700;
+    cursor: pointer;
+}
+.checkout button:hover{
+    background: transparent;
+}
+/*********/
+/*CHECKOUT*/

@@ -9,6 +9,7 @@
 - Product: ADD, EDIT, DELETE
 - Rate: ADD, DELETE
 - Cart: ADD, CHANGE CART
+- PAPMENT: connect to PAYPAL
 
  # Fix:
  - when quantity item = 0 show not interface start
@@ -17,3 +18,4 @@
 
  # Process
  - shiping, order, payment, note, chatbot
+ - chua luu order vao co so du lieu

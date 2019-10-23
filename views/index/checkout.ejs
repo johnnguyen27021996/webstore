@@ -32,47 +32,44 @@
         </nav>
     </header>
 
-    <section class="cart-main">
-        <h1 class="text-title">Your Cart</h1>
-        <table>
-            <thead>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </thead>
-            <tbody class="cart-body">
-                <% var total = 0;
-                        if(cart){ %>
-                <% cart.forEach(item=>{ 
-                                total +=  parseInt(item.product.price)*parseInt(item.quantity);
-                                %>
+    <section class="checkout">
+        <h1 class="text-title">CHECK OUT</h1>
+        <form action="/checkout" method="post">
+            <table>
                 <tr>
-                    <td><%= item.product.name %></td>
-                    <td><%= item.product.price %> <%= item.product.currency %></td>
-                    <td><input type="number" name="quantity" id="quantity" data-id="<%= item.product._id %>"
-                            value="<%= item.quantity %>"></td>
-                    <td><%= parseInt(item.product.price)*parseInt(item.quantity) %> <%= item.product.currency %>
+                    <td>Your Name</td>
+                    <td><input type="text" name="name" id="name" placeholder="Enter your name ..." required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" id="email" placeholder="Enter your email..."></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="text" name="phone" id="phone" placeholder="Enter your phone number..." required></td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td>
+                        <input type="text" name="" id="" placeholder="<%= total %> USD" disabled="">
+                        <input type="text" name="amount" id="" placeholder="<%= total %> USD" value="<%= total %>" hidden>
                     </td>
                 </tr>
-                <% }) %>
-                <% }else{ %>
                 <tr>
-                    <td colspan="4">
-                        <h1>NO ITEM IN CART</h1>
+                    <td>Type Payment</td>
+                    <td>
+                        <select name="payment" id="">
+                            <option value="online">PAYPAL</option>
+                            <option value="offline">HOME</option>
+                        </select>
                     </td>
                 </tr>
-                <% } %>
                 <tr>
-                    <td colspan="4">
-                        <h2>Total: <%= total %> USD</h2>
-                    </td>
+                    <td></td>
+                    <td><button type="submit">Check Out</button></td>
                 </tr>
-            </tbody>
-        </table>
-        <div class="btn">
-            <a href="/checkout" class="readmore">Check Out</a>
-        </div>
+            </table>
+        </form>
     </section>
 
     <section class="new-product">

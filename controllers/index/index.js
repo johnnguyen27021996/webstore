@@ -1,5 +1,6 @@
 const dbProduct = require('../../models/product.model');
 const dbRate = require('../../models/rate.model');
+const payment = require('../../src/paypal/paypal');
 
 exports.getHome = (req, res)=>{
     dbProduct.find({}, (err, doc)=>{
@@ -95,4 +96,36 @@ exports.changeQuantityCart = (req, res)=>{
     res.render('index/cartbody-template', {
         cart: req.session.cart
     })
+}
+
+exports.getCheckOut = (req, res)=>{
+    let total = 0;
+    if(!req.session.cart || req.session.cart == ''){
+        total = 0;
+    }else{
+        req.session.cart.forEach(item => {
+            total += parseInt(item.product.price)*parseInt(item.quantity); 
+        })
+    }
+    res.render('index/checkout', {
+        cart: req.session.cart,
+        total: total
+    })
+}
+
+exports.postCheckOut = (req, res)=>{
+    let name = req.body.name,
+        email = req.body.email,
+        phone = req.body.phone,
+        amount = req.body.amount,
+        payment = req.body.payment;
+    payment(res, req.session.cart, amount);
+}
+
+exports.successsPayment = (req, res)=>{
+    res.send('success');
+}
+
+exports.cancelPayment = (req, res)=>{
+    res.send('cancel');
 }
