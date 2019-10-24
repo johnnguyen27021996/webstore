@@ -1,5 +1,6 @@
+const url = require('url');
 const dbOrder = require('../../models/order.model');
-const paypal = require('paypal-rest-sdk');
+const paypal = require('paypal-rest-sdk')
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live 
@@ -95,9 +96,12 @@ exports.postCheckOut = (req, res) => {
                     throw error;
                 } else {
                     newOrder.payID = payment.id;
-                    newOrder.save();
                     payment.links.forEach(item => {
                         if (item.rel == 'approval_url') {
+                            let newUrl = url.parse(item.href, true);
+                            let token = newUrl.query.token;
+                            newOrder.payToken = token;
+                            newOrder.save();
                             res.redirect(item.href);
                         }
                     })
@@ -140,6 +144,7 @@ exports.successsPayment = (req, res) => {
 
     dbOrder.findOne({payID: paymentID}).exec((err, doc)=>{
         doc.payStatus = true;
+        doc.payToken = undefined;
         doc.save();
         delete req.session.cart;
         req.flash('notice', 'Order Success');
@@ -148,6 +153,9 @@ exports.successsPayment = (req, res) => {
 }
 
 exports.cancelPayment = (req, res) => {
-    req.flash('notice', 'Order Canceled');
-    res.redirect('/cart');
+    let token = req.query.token;
+    dbOrder.findOneAndDelete({payToken:token}).exec((err, doc)=>{
+        req.flash('notice', 'Order Canceled');
+        res.redirect('/cart');
+    })
 }

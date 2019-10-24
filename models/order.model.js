@@ -36,6 +36,7 @@ var newOrder = new Schema({
     //     ref: 'ships'
     // },
     payID: String,
+    payToken: String,
     payType: {
         type: String,
         required: true
