@@ -26,6 +26,6 @@ exports.postLogin = (req, res)=>{
 }
 
 exports.getLogout = (req, res)=>{
-    req.session.destroy();
+    delete req.session.username;
     res.redirect('/admin');
 }

@@ -27,6 +27,7 @@ app.use('/admin', require('./routers/author'));
 app.use('/dashboard', require('./routers/dashboard'));
 app.use('/product', require('./routers/product'));
 app.use('/rate', require('./routers/rate'));
+app.use('/order', require('./routers/order'));
 
 app.listen(process.env.PORT || process.env.port, () => {
     console.log('Running ...');

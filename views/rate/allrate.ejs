@@ -15,7 +15,7 @@
                 <li>PRODUCTS</li>
                 <li><a href="">Members</a></li>
                 <li><a href="/product">Products</a></li>
-                <li><a href="">Orders</a></li>
+                <li><a href="/order">Orders</a></li>
                 <li><a href="/rate">Rates</a></li>
                 <li><a href="">Ships</a></li>
                 <li><a href="">Payments</a></li>
@@ -38,7 +38,7 @@
                 <tr>
                     <td><%= item.createBy %>
                     </td>
-                    <td><%= item.productID.name %></td>
+                    <td><%= item.populate_product.name %></td>
                     <td><%= item.star %></td>
                     <td><%= item.comment %></td>
                     <td><%= item.createAt %></td>
