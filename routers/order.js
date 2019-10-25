@@ -10,5 +10,6 @@ var islog = (req, res, next)=>{
 }
 
 router.get('/', islog, controller.getAllOrder);
+router.get('/p=(:page)?', islog, controller.getAllOrder);
 
 module.exports = router;

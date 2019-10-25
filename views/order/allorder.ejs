@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Order</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>PRODUCTS</li>
+                <li><a href="">Members</a></li>
+                <li><a href="/product">Products</a></li>
+                <li><a href="/order">Orders</a></li>
+                <li><a href="/rate">Rates</a></li>
+                <li><a href="">Ships</a></li>
+                <li><a href="">Payments</a></li>
+                <li><a href="/admin/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="search">
+            <label for="">Search Order By Day - Please choose a day</label>
+            <input type="date" name="datesearch" id="">
+        </div>
+        <br>
+        <h1>Order</h1>
+        <table border="1">
+            <thead>
+                <th>Customer Name</th>
+                <th>Customer Email</th>
+                <th>Customer Phone</th>
+                <th>Amount</th>
+                <th>Pay Type</th>
+                <th>Pay Status</th>
+                <th>Order At</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <% orders.forEach(item=>{ %>
+                <tr>
+                    <td><%= item.nameCustomer %></td>
+                    <td>
+                        <% if(item.emailCustomer != undefined || item.emailCustomer != ''){ %>
+                            <%= item.emailCustomer %>
+                        <% }else{ %>
+                            <p>No Email</p>
+                        <% } %>
+                        
+                    </td>
+                    <td><%= item.phoneCustomer %></td>
+                    <td><%= item.amount %> USD</td>
+                    <td>
+                        <% if(item.payType == 'offline'){ %>
+                            <p>Payment in home</p>
+                        <% }else{ %>
+                            <p>Payment vie Paypal</p>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if(item.payStatus == false){ %>
+                            <p>Unpaid</p>
+                        <% }else{ %>
+                            <p>Paid</p>
+                        <% } %>
+                    </td>
+                    <td><%= new Date(item.bookAt).toDateString() %></td>
+                    <td>
+                        <a href="/order/detail/<%= item._id %>">Detail</a>||
+                        <a href="/order/edit/<%= item._id %>">Edit</a>||
+                        <a href="/order/delete/<%= item._id %>">Delete</a>
+                        </th>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <nav>
+            <ul>
+                <li>Pre</li>
+                <% for(let i=0; i<pagination; i++){ %>
+                <li><a href="/order/p=<%= (i+1) %>"><%= (i+1) %></a></li>
+                <% } %>
+                <li>Next</li>
+            </ul>
+        </nav>
+    </section>
+</body>
+
+</html>
